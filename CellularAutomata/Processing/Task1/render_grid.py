@@ -20,7 +20,6 @@ def populateGrid(pedestrians, obstacles, rows, cols, targetX, targetY):
     
     grid_t[targetX - 1][targetY - 1] = 'T'
     for p in pedestrians:
-        print("p is", p)
         grid_t[p[0] - 1][p[1] - 1] = 'P'
     for o in obstacles:
         grid_t[o[0] - 1][o[1] - 1] = 'O'

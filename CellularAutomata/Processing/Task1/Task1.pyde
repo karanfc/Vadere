@@ -10,9 +10,9 @@ def setup():
     
     """
     
-    size(800,800)    
-    n, pedestrians, obstacles, targets, resolution = read_files('scenario_1.json')
-    grid_t = populateGrid(pedestrians, obstacles, n, n, targets[0], targets[1])
+    size(500,500)    
+    n, pedestrians, obstacles, target, resolution = read_files('scenario_1.json')
+    grid_t = populateGrid(pedestrians, obstacles, n, n, target[0], target[1])
     renderGrid(grid_t, n, resolution)
     frameRate(2)        
 
@@ -25,6 +25,6 @@ def draw():
     :return: 
     
     """    
-    n, pedestrians, obstacles, targets, resolution = read_files('scenario_1.json')
-    grid_t = populateGrid(pedestrians, obstacles, n,n,targets[0], targets[1])
+    n, pedestrians, obstacles, target, resolution = read_files('scenario_1.json')
+    grid_t = populateGrid(pedestrians, obstacles, n,n,target[0], target[1])
     renderGrid(grid_t, n, resolution)
