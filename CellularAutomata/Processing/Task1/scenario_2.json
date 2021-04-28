@@ -1,0 +1,14 @@
+{
+    "scenario_details":[
+        {
+            "N": 50,
+            "pedestrians": [[5,25]],
+            "obstacles": [],
+            "target": [20,25],
+            "resolution": 15
+
+
+        }
+    ]
+
+}
