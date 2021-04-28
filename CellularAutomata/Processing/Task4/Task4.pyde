@@ -1,35 +1,41 @@
 obstacles = []
-targetX, targetY = 10, 10
-cols, rows = 10, 10
-resolution = 50
+targetX, targetY = 15, 15 
+cols, rows = 30, 30
+resolution = 30
 grid_t = []
 cost_function = []
-rmax = 1.2
+rmax = 2.1
 pedestrians = []
 #pedestrians = [[10, 40], [16,22],[16, 58],[22, 64], [40, 70], [40, 10], [22, 16]]
-obstacles = [[5, 1], [5,2], [5,3], [5,4],[5,6],[5,7],[5,8],[5,9],[5,10]]
+#obstacles = [[5, 1], [5,2], [5,3], [7,4],[7,6],[7,7],[5,8],[8,9],[8,10]]
 time = 0
 dijkstra_cost_function = []
 INFINITY = 100;
 
 def setup():
-    print 'Start'
-    global grid_t, cost_function, targetX, targetY, obstacles
-    #obstacles = generateObstacles(cols, rows, 20)
+    global grid_t, cost_function, targetX, targetY, obstacles, rows, cols
+    obstacles = generateObstacles(cols, rows, 400)
     #print obstacles
     frameRate(2)
-    pedestrians = generatePedestrians(4, rows, 5)
+    pedestrians = generatePedestrians(cols, rows, 20)
     size(900,900)
     grid_t = populateGrid(pedestrians, obstacles)
-    #renderGrid(grid_t)
+    #renderGrid(grid_t)    
+
+    #saveFrame()
+
     cost_function = calculateCostFunction()
     dijkstra_cost_function = createDijkstraCostFunction()
     dijkstra_cost_function = [[x/(sqrt(pow(rows,2)+pow(cols,2))) for x in lst] for lst in dijkstra_cost_function]
-    #print dijkstra_cost_function
-    #renderCostFunction(dijkstra_cost_function)
+    print dijkstra_cost_function
+    renderCostFunction(dijkstra_cost_function)
+    saveFrame()
     delay(3000)      
+    #renderCostFunction(cost_function)
+    #saveFrame()
 
 def generateObstacles(cols, rows, N):
+    randomSeed(50)
     global obstacles
     for i in range(N):
         obstacles.append([int(random(cols)), int(random(rows))])
@@ -37,17 +43,19 @@ def generateObstacles(cols, rows, N):
 
 def generatePedestrians(cols, rows, N):
     global pedestrians
+    randomSeed(3)
     for i in range(N):
         pedestrians.append([int(random(cols)), int(random(rows))])
     return pedestrians
 
+'''
 def draw():
     global grid_t, cost_function, obstacles
     background('#000000') 
     pedestrians = updateTimeStep()
     grid_t = populateGrid(pedestrians, obstacles)
     renderGrid(grid_t)
-
+'''
 
 def calculateCostFunction():
     global grid_t
