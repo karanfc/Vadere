@@ -1,3 +1,5 @@
+from test import *
+
 obstacles = []
 targetX, targetY = 40, 40
 cols, rows = 80, 80
