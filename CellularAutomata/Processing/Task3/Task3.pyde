@@ -90,23 +90,19 @@ def findNextStep(current_p,pedestrains, grid_t):
     next_x, next_y = current_p[0], current_p[1]  
     current_cost = cost_function[current_p[0] - 1][current_p[1] - 1] 
     #up
-    if (current_p[0] - 1 > 0 and cost_function[current_p[0] - 2][current_p[1] - 1] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0] - 2, current_p[1] - 1, rmax) < current_cost) and grid_t[current_p[0] - 2][current_p[1] - 1] != 'P':
-        if cost_function[current_p[0] - 2][current_p[1] - 1]>0:
+    if (current_p[0] - 1 > 0 and cost_function[current_p[0] - 2][current_p[1] - 1] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0] - 2, current_p[1] - 1, rmax) < current_cost) and grid_t[current_p[0] - 2][current_p[1] - 1] != 'P' and cost_function[current_p[0] - 2][current_p[1] - 1]>0:
             next_x, next_y = current_p[0] - 1, current_p[1] 
             current_cost = cost_function[p[0] - 2][current_p[1] - 1] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0] - 2, current_p[1] - 1, rmax)
     #down
-    if (current_p[0] + 1 < cols and cost_function[current_p[0]][current_p[1] - 1] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0], current_p[1] - 1, rmax) < current_cost) and grid_t[current_p[0]][current_p[1] - 1] != 'P':
-        if cost_function[current_p[0]][current_p[1] - 1]>0:
+    if (current_p[0] + 1 < cols and cost_function[current_p[0]][current_p[1] - 1] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0], current_p[1] - 1, rmax) < current_cost) and grid_t[current_p[0]][current_p[1] - 1] != 'P' and cost_function[current_p[0]][current_p[1] - 1]>0:
             next_x, next_y = current_p[0] + 1, current_p[1] 
             current_cost = cost_function[current_p[0]][current_p[1] - 1] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0], current_p[1] - 1, rmax)
     #left 
-    if (current_p[1] - 1 > 0 and cost_function[current_p[0] - 1][current_p[1] - 2] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0] - 1, current_p[1] - 2, rmax) < current_cost) and grid_t[current_p[0] - 1][current_p[1] - 2] != 'P':
-        if cost_function[current_p[0] - 1][current_p[1] - 2]>0:
+    if (current_p[1] - 1 > 0 and cost_function[current_p[0] - 1][current_p[1] - 2] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0] - 1, current_p[1] - 2, rmax) < current_cost) and grid_t[current_p[0] - 1][current_p[1] - 2] != 'P' and cost_function[current_p[0] - 1][current_p[1] - 2]>0:
             next_x, next_y = current_p[0], current_p[1] - 1
             current_cost = cost_function[current_p[0] - 1][current_p[1] - 2] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0] - 1, current_p[1] - 2, rmax)
    #right 
-    if (current_p[1] + 1 < rows and cost_function[current_p[0] - 1][current_p[1]] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0] - 1, current_p[1], rmax) < current_cost) and grid_t[current_p[0] - 1][current_p[1]] != 'P':
-        if cost_function[current_p[0] - 1][current_p[1]]>0:
+    if (current_p[1] + 1 < rows and cost_function[current_p[0] - 1][current_p[1]] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0] - 1, current_p[1], rmax) < current_cost) and grid_t[current_p[0] - 1][current_p[1]] != 'P' and cost_function[current_p[0] - 1][current_p[1]]>0:
             next_x, next_y = current_p[0], current_p[1] + 1
             current_cost = cost_function[current_p[0] - 1][current_p[1]] + proximityToOtherPedestrians(current_p, pedestrians, current_p[0] - 1, current_p[1], rmax)
     return next_x, next_y
